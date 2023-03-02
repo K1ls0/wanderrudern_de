@@ -1,0 +1,40 @@
+{{ define "main" }}
+
+<div style="display:flex;flex-direction:column;justify-content:flex-start;">
+    <h1>{{ .Title }}</h1>
+
+    {{ with .Params.news }}
+    {{ partial "news_slide.html" . }}
+    {{ end }}
+
+    <div class="column-layout-row">
+        <div class="column-layout-column">
+            <ul>
+                <li><a href="#">Ist rudern das Richtige für mich?</a></li>
+                <li><a href="#">Was ist Wanderrudern?</a></li>
+                <li><a href="#">Wann und wo kann ich rudern?</a></li>
+            </ul>
+        </div>
+        <div class="column-layout-column">
+            <div id="quickaccess">
+                <ul>
+                    <li><a href="#">Die nächsten Monate</a></li>
+                    <li><a href="#">Berichte</a></li>
+                    <li><a href="#">Gäste</a></li>
+                    <li><a href="#">Ansprechpartner</a></li>
+                    <li><a href="#">Ruderrevier</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <h2>Aktuelles</h2>
+    <ul>
+        <li style="text-align: justify;">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</li>
+        <li style="text-align: justify;">This is some test and i hope you can do it</li>
+    </ul>
+    {{ .Content }}
+</div>
+
+{{ end }}

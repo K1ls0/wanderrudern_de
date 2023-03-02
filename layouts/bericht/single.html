@@ -1,0 +1,32 @@
+{{ define "main" }}
+<div class="bericht">
+    <h1 class="bericht__title">{{ .Title }}</h1>
+    <hr class="bericht__spacer" />
+    <div class="bericht__author_dates">
+        <span>
+            {{ if and (isset .Params "begin") (isset .Params "end") }}
+            {{ (time .Params.end).Format "2.01.2006" }} bis {{ (time .Params.begin).Format "2.01.2006" }}
+            {{ end }}
+        </span>
+        <span> geschrieben von {{ .Params.author }} </span>
+        <!-- Tag navigation may be added later -->
+    </div>
+</div>
+<div style="flex-grow: 1;">
+    {{ .Content }}
+</div>
+<hr class="bericht__spacer" />
+<div class="bericht__footer_nav">
+    <span>
+        {{ with .PrevInSection }}
+        <a href="{{ .RelPermalink }}">&laquo; {{ .Title }}</a>
+        {{ end }}
+    </span>
+
+    <span>
+        {{ with .NextInSection }}
+        <span><a href="{{ .RelPermalink }}">{{ .Title }} &raquo;</a>
+            {{ end }}
+        </span>
+</div>
+{{ end }}

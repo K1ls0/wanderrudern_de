@@ -1,0 +1,12 @@
+---
+title: "Ruderclub Kleinmachnow Stahnsdorf Teltow e.V."
+translationKey: _index
+news:
+  - 
+    text: "Stegbau geht weiter"
+    href: "/news/stegbau"
+    img: /bundle/backdrops/club-gelaende.jpg
+  -
+    text: "Nirina jüngste Äquatorpreisträgerin aller Zeiten"
+    img: /bundle/backdrops/griebnitzsee-anfang-skiff.jpg
+---

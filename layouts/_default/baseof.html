@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        {{ partial "head-meta.html" }}
+
+        {{ $style_main := resources.Get "sass/main.scss" | resources.ToCSS | resources.Minify }}
+        <link rel="stylesheet" href={{ $style_main.RelPermalink }}>
+
+        {{ $style_slideshow := resources.Get "sass/slideshow.scss" | resources.ToCSS | resources.Minify }}
+        <link rel="stylesheet" href={{ $style_slideshow.RelPermalink }}>
+
+        <!--{{ $style_bericht := resources.Get "sass/bericht.scss" | resources.ToCSS | resources.Minify }}-->
+
+        {{ with .OutputFormats.Get "rss" -}}
+            {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
+        {{ end -}}
+
+        <meta name="Author" content="Stefan Biastock">
+        <meta name="publisher" content="Ruderclub Kleinmachnow">
+        <meta name="copyright" content="Stefan Biastock">
+        <meta name="page-topic" content="Sport">
+        <meta name="page-type" content="Vereinspage">
+        <meta name="revisit-after" content="4 weeks">
+
+        {{ block "head" .}} {{ end }}
+    </head>
+    
+    <body>
+        {{ partial "nav.html" }}
+        <div class="backdrop"></div>
+        <main class="main-content">
+            <div class="container">
+                <div class="page-content">
+                    {{ block "main" .}} {{ end }}
+                </div>
+            </div>
+        </main>
+        {{ partial "footer.html" }}
+    </body>
+</html>

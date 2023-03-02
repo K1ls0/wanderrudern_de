@@ -1,0 +1,93 @@
+
+<div class="slideshow__container" id="slideshow">
+    <div onclick="slideshow_onclick()">
+        {{ range $v := . }}
+            <div
+                class="slideshow__slides" 
+                {{ with $v.href }} data-href="{{ . }}" {{ end }}>
+                <img class="slideshow__image" src="{{ $v.img }}" alt=""/> <!--http://farm9.staticflickr.com/8241/8562523343_9bb49b7b7b.jpg-->
+                {{ with $v.text }}<div class="slideshow__text">{{ . }}</div> {{ end }}
+            </div>
+        {{ end }}
+        <!--
+        <div class="slideshow__slides" data-href="#2">
+            <img class="slideshow__image" src="http://farm9.staticflickr.com/8465/8113424031_72048dd887.jpg" alt=""/>
+            <div class="slideshow__text">Image 02</div>
+        </div>
+        -->
+    </div>
+    <a class="slideshow__prev" onclick="slides_next(-1)">&#10094;</a>
+    <a class="slideshow__next" onclick="slides_next(1)">&#10095;</a>
+</div>
+<br>
+
+<div style="text-align: center;">
+    {{ $i := 0 }}
+    {{ range . }}
+    <span class="slideshow__dot" onclick="set_slide({{ $i }})"></span>
+    {{ $i := (add $i 1) }}
+    {{ end }}
+</div>
+
+<script>
+    const TIMEOUT_MS = 6 * 1000;
+    let slide_idx = 0;
+    function slides_next(n) {
+        slide_idx += n;
+        show_slide(slide_idx);
+    }
+
+    function set_slide(n) {
+        slide_idx = n;
+        show_slide(slide_idx);
+    }
+
+    function show_slide(n) {
+        let slides = document.getElementsByClassName("slideshow__slides");
+        let dots = document.getElementsByClassName("slideshow__dot");
+
+        if (n >= slides.length) {
+            slide_idx = 0;
+        }
+        if (n < 0) {
+            slide_idx = slides.length-1;
+        }
+        for (let i = 0; i < slides.length; i++) {
+            slides[i].className = slides[i].className.replace(" slideshow__fade", "")
+            //slides[i].style.display = "none";
+            //slides[i].style.opacity = 0.2;
+        }
+        for (let i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" slideshow__dot-active", "");
+        }
+        //slides[slide_idx].style.display = "block";
+        slides[slide_idx].className += " slideshow__fade";
+        //slides[slide_idx].style.opacity = 1.0;
+        dots[slide_idx].className += " slideshow__dot-active";
+    }
+
+    function show_slides() {
+        slide_idx++;
+        show_slide(slide_idx);
+        setTimeout(show_slides, TIMEOUT_MS);
+    }
+
+    function slideshow_onclick() {
+        let slide = document.getElementsByClassName("slideshow__slides")[slide_idx];
+        if (slide !== undefined && slide.dataset !== undefined && slide.dataset.href !== undefined) {
+            console.log("href", slide.dataset.href);
+            window.open(slide.dataset.href, "_self")
+        } else {
+            console.error(document.getElementsByClassName("slideshow__slides"))
+        }
+        
+    }
+    show_slides();
+</script>
+<!--
+<div class="slideshow-slider">
+    <img class="slideshow-photo" src="http://farm9.staticflickr.com/8465/8113424031_72048dd887.jpg" alt="" />
+    <img class="slideshow-photo" src="http://farm9.staticflickr.com/8241/8562523343_9bb49b7b7b.jpg" alt="" />
+    <img class="slideshow-photo" src="http://farm9.staticflickr.com/8465/8113424031_72048dd887.jpg" alt="" />
+</div>
+-->
