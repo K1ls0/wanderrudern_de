@@ -1,9 +1,9 @@
 
 {{ define "main" }}
 <div>
-    <h1>Diese Seite existiert nicht</h1>
+    <h1> {{ i18n "404_site_doesnt_exist" }} </h1>
     <div>
-        Falls du eine alte Seite suchst, findest du sie <b><a href="/old">hier</a></b>
+        {{ i18n "404_if_you_search_something_look" }} <b><a href="/old">{{ i18n "404_here" }}</a></b>
     </div>
 </div>
 {{ end }}

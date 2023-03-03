@@ -2,4 +2,8 @@
 title: "{{ replace .Name '-' ' ' | title }}"
 date: {{ .Date }}
 draft: true
+author:
+tags: [announcement]
+categories: [announcement]
 ---
+

@@ -1,6 +1,6 @@
 {{ define "main" }}
     <h1 class="col-header dark-blue">Index Berichte</h1>
-    {{ range (where .Site.RegularPages "Type" "bericht") }}
+    {{ range (where .Site.RegularPages "Type" "trip_report") }}
     <a href="{{ .RelPermalink }}">
         <div class="preview-title" href="{{ .RelPermalink }}"> {{ .Title }}</div>
         <span>
