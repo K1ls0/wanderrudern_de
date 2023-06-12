@@ -1,3 +1,21 @@
 {{ define "main" }}
-    <h1>Nothing to see here</h1>
+    <div class="filling-container">
+        <h1 class="col-header dark-blue">{{ .Title }}</h1>
+        {{ $paginator := (.Paginate (.Pages.ByParam "end").Reverse 20) }}
+        {{ range $paginator.Pages }}
+        <a href="{{ .RelPermalink }}">
+            <div class="preview-title" href="{{ .RelPermalink }}"> {{ .Title }}</div>
+            <span>
+                {{ (time .Params.begin).Format "02.01.2006" }}
+                {{ i18n "until" }}
+                {{ (time .Params.end).Format "02.01.2006" }}
+            </span>
+        </a>
+        <br>
+        {{ end }}
+    </div>
+    <hr class="list__spacer">
+    <div style="display: flex; justify-content: center;">
+    {{ template "_internal/pagination.html" . }}
+    </div>
 {{ end }}

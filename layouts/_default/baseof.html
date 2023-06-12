@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="de">
     <head>
+        <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
         {{ partial "head-meta.html" }}
 
         {{ $style_main := resources.Get "sass/main.scss" | resources.ToCSS | resources.Minify }}
         <link rel="stylesheet" href={{ $style_main.RelPermalink }}>
-
         {{ $style_slideshow := resources.Get "sass/slideshow.scss" | resources.ToCSS | resources.Minify }}
         <link rel="stylesheet" href={{ $style_slideshow.RelPermalink }}>
 

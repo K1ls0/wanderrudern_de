@@ -1,3 +1,3 @@
 ---
-title: All Berichte
+title: Alle Berichte
 ---

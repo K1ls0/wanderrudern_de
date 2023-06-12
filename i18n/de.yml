@@ -1,14 +1,29 @@
 rowingclub:
   other: Ruderclub
-site_doesnt_exist:
+404_site_doesnt_exist:
   other: Diese Seite existiert nicht
-if_you_search_something_look:
+404_if_you_search_something_look:
   other: Falls du eine alte Seite suchst, findest du sie
-here:
+404_here:
   other: hier
-
+until:
+  other: bis
 announcements:
   other: Ankündigungen
-
 trip_report_written_by:
   other: geschrieben von
+
+imprint:
+  other: Impressum
+data_protection:
+  other: Datenschutz
+events:
+  other: Termine
+trip_reports:
+  other: Berichte
+beginner:
+  other: Anfänger
+news:
+  other: News
+contact:
+  other: Kontakt

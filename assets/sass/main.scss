@@ -96,6 +96,21 @@ a:hover {
   opacity: 0.5;
 }
 
+br {
+  margin: 5pt;
+}
+
+/* pagination style */
+.pagination {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+}
+/* pagination style */
+.page-item {
+  padding: 2pt;
+}
+
 ul {
   list-style-type: square;
   list-style-position: inside;
@@ -108,6 +123,10 @@ ul {
   margin-right: auto;
   padding-left: $container-padding-sm;
   padding-right: $container-padding-sm;
+}
+
+.filling-container {
+  height: 100%;
 }
 
 .page-content {
@@ -252,12 +271,15 @@ ul {
 }
 
 .footer-content {
+  a {
+    color: $fg-dark;
+  }
+
   color: $fg-dark;
   padding-top: 40px;
 
   &__left-group {
     width: 100%;
-    color: $fg-dark;
     margin-bottom: 20px;
   }
 
@@ -291,6 +313,7 @@ ul {
     }
   }
 }
+
 .preview-title {
   display: block;
   font-weight: bold;
@@ -303,6 +326,9 @@ ul {
 .column-layout-column {
   flex: 50%;
 }
+.paginator-group {
+  list-style-type: none;
+}
 
 
 .image-footer {
@@ -310,7 +336,12 @@ ul {
   justify-content: space-between;
   margin-top: 10pt;
 }
-
+.list {
+  &__spacer {
+    border-top: 4px solid #bbb;
+    border-radius: 2px;
+  }
+}
 .bericht {
   display: flex;
   flex-direction: column;

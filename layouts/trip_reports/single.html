@@ -1,3 +1,14 @@
+{{ define "head" }}
+    {{ with .Params.description }}
+    <meta name="description" content="Der Ruderclub Kleinmachow betreibt Rudern als Freizeitsport für Jugendliche und Erwachsene. Zusätzlich zum normalen Ruderbetrieb werden jedes Jahr viele Wanderfahrten auf Deutschen und Europäischen Gewässern durchgeführt.">
+    {{ end }}
+
+    <meta name="keywords" content="{{ range $index, $ctag := $.Site.Params.defaultMetaTags }}{{ if $index}}, {{ end }}{{ $ctag | safeHTML }}{{ end }}">
+    {{ with .Params.tags }}
+    <meta name="keywords" content="{{ range $index, $ctag := . }}{{ if $index}}, {{ end }}{{ $ctag | safeHTML }}{{ end }}">
+    {{ end }}
+{{ end }}
+
 {{ define "main" }}
 <div class="bericht">
     <h1 class="bericht__title">{{ .Title }}</h1>
@@ -8,7 +19,7 @@
             {{ (time .Params.end).Format "2.01.2006" }} bis {{ (time .Params.begin).Format "2.01.2006" }}
             {{ end }}
         </span>
-        <span> {{ i18n "written_by" }} {{ .Params.author }} </span>
+        <span> {{ i18n "trip_report_written_by" }} {{ .Params.author }} </span>
         <!-- Tag navigation may be added later -->
     </div>
 </div>

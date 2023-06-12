@@ -22,10 +22,8 @@
 <br>
 
 <div style="text-align: center;">
-    {{ $i := 0 }}
-    {{ range . }}
+    {{ range $i, $c := . }}
     <span class="slideshow__dot" onclick="set_slide({{ $i }})"></span>
-    {{ $i := (add $i 1) }}
     {{ end }}
 </div>
 

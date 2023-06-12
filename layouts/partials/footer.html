@@ -1,8 +1,14 @@
 <footer>
 <div class="container">
     <div class="footer-content">
-        <!--<h2 class="footer-content__site-name">{{ site.Title }}</h2>-->
-        <p>{{ i18n "rowingclub" }} Kleinmachnow Stahnsdorf Teltow, {{ now.Format "2006" }}</p>
+        <div class="footer-content__left-group">
+            <p>{{ i18n "rowingclub" }} Kleinmachnow Stahnsdorf Teltow, {{ now.Format "2006" }}</p>
+        </div>
+        <div class="footer-content__right-group">
+            <!--<h2 class="footer-content__site-name">{{ site.Title }}</h2>-->
+            <p><a href="/impressum" class="">{{ i18n "imprint" }}</a></p>
+            <p><a href="/datenschutz">{{ i18n "data_protection"}}</a></p> 
+        </div>
     </div>
     <div class="footer-social">
         <a href="https://www.facebook.com/wanderrudern" target="_blank" class="icons">

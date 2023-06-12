@@ -6,7 +6,24 @@ rowingclub:
   other: If you want to find an old site, look
 404_here:
   other: here
+until:
+  other: until
 announcements:
   other: Announcements
 trip_report_written_by:
   other: geschrieben von
+
+imprint:
+  other: Imprint
+data_protection:
+  other: Data protection
+events:
+  other: Events
+trip_reports:
+  other: Trip Reports
+beginner:
+  other: Beginner
+news:
+  other: News
+contact:
+  other: Contact
