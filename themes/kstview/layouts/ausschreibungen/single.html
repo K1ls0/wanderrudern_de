@@ -1,0 +1,56 @@
+{{ define "head" }}
+    {{ with .Params.description -}}
+    <meta name="description" content="{{ . }}">
+    {{- end -}}
+
+    {{ with .Params.tags -}}
+    <meta name="keywords" content=" 
+        {{- range $index, $ctag := . -}}
+            {{- if $index -}},{{- end -}} {{- $ctag | safeHTML -}}
+        {{- end -}} ">
+    {{ end -}}
+{{ end }}
+
+{{ define "main" -}}
+<div class="flex flex-col">
+    <hr/>
+    <div class="w-full flex justify-between px-0 py-2">
+        <span>
+        {{ if and (isset .Params "begin") (isset .Params "end") }}
+        {{ (time .Params.begin).Format "02.01.2006" }} {{ i18n "until" }} {{ (time .Params.end).Format "02.01.2006" }}
+        {{ end }}
+        </span>
+        <div class="flex flex-col items-end">
+            <span>{{ with .Date }}{{ (time .).Format "02.01.2006" }}{{ end }}</span>
+            {{ with .Params.author -}}
+                <span>{{ i18n "trip_report_written_by" }} {{ . }}</span>
+            {{- end }}
+        </div>
+
+        <!-- Tag navigation may be added later -->
+    </div>
+    <hr/>
+    {{ partial "intern/page-title.html" .Title }}
+    <div class="flex-grow">{{ .Content }}</div>
+</div>
+{{- if .Params.images }}
+<hr/>
+{{- partial "gallery.html" . }}
+{{- end }}
+
+<hr/>
+<div class="flex w-full justify-between">
+    <span>
+        {{- with .PrevInSection }}
+        <a href="{{ .Permalink }}">&laquo; {{ .Title }}</a>
+        {{- end }}
+    </span>
+
+    <span>
+        {{- with .NextInSection }}
+        <span><a href="{{ .Permalink }}">{{ .Title }} &raquo;</a>
+            {{ end }}
+        </span>
+    </span>
+</div>
+{{- end }}
